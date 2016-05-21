@@ -1,15 +1,22 @@
-## Put comments here that give an overall description of what your
-## functions do
+## THe first function creates a cached matrix while the second one inverts the matrix. 
+##If the matrix is already inverted by the first function the cacheSolve function 
+##pulls the output from the environment rather then calculating it
 
-## Write a short comment describing this function
+##This function creates a special "matrix" object that can cache its inverse.
 
 makeCacheMatrix <- function(x = matrix()) {
-
+  Matrix_Input <<- x
+  Output_makeCacheMatrix <<- solve(x)
+  Output_makeCacheMatrix
 }
 
 
-## Write a short comment describing this function
+## Function that checks if inverse exists in environment cache and calculates the inverse if it doesn't
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+  if (identical(x, Matrix_Input) == TRUE) {
+    message("getting cached data")
+    return(Output_makeCacheMatrix)}
+  Output_cacheSolve <- solve(x)
+  Output_cacheSolve
 }
